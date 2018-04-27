@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+import sys
+
+from subprocess import call
+
+
+# get the volume percentage for input
+try:
+    volume = int(sys.argv[1])
+except:
+    print('please provide the volume value')
+    print('e.g. "set_volume 70" to set the volume to 70% ')
+    sys.exit()
+
+# use amixer to set the volume
+call(['amixer', 'sset', 'Master', '{}%'.format(volume)])
+
