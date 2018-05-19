@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+import sys
+
+from subprocess import call
+
+
+# get the volume percentage for input
+try:
+    profile_name = sys.argv[1]
+except:
+    print('You can specify a profile name if you want :)')
+    profile_name = 'default'
+
+print('opening chrome with profile {}'.format(profile_name))
+
+# use amixer to set the volume
+call(['google-chrome', '--profile-directory="~/.google_chrome/{}"'.format(profile_name)])
