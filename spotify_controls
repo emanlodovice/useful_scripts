@@ -1,0 +1,26 @@
+#!/usr/bin/python
+
+import sys
+
+from subprocess import call
+
+
+# get the volume percentage for input
+try:
+    command = sys.argv[1]
+except:
+    print('You can specify a command to do. e.g. play, pause, next, prev')
+    command = 'open'
+
+if command == 'open':
+    call(['spotify'])
+elif command == 'play':
+    call(['dbus-send', '--print-reply', '--dest=org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2', 'org.mpris.MediaPlayer2.Player.Play'])
+elif command == 'pause':
+    call(['dbus-send', '--print-reply', '--dest=org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2', 'org.mpris.MediaPlayer2.Player.Pause'])
+elif command == 'toogle':
+    call(['dbus-send', '--print-reply', '--dest=org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2', 'org.mpris.MediaPlayer2.Player.PlayPause'])
+elif command == 'prev':
+    call(['dbus-send', '--print-reply', '--dest=org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2', 'org.mpris.MediaPlayer2.Player.Previous'])
+else:
+    call(['dbus-send', '--print-reply', '--dest=org.mpris.MediaPlayer2.spotify', '/org/mpris/MediaPlayer2', 'org.mpris.MediaPlayer2.Player.Next'])
