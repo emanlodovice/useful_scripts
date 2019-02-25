@@ -1,0 +1,18 @@
+#!/usr/bin/python
+import json
+
+import pyperclip
+
+
+def format_json():
+    input_json = pyperclip.paste()
+    try:
+        input_dict = json.loads(input_json)
+    except:
+        return
+    pretty_json = json.dumps(input_dict, sort_keys=True, indent=4)
+    pyperclip.copy(pretty_json)
+
+
+if __name__ == '__main__':
+    format_json()
