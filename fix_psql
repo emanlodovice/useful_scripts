@@ -1,0 +1,4 @@
+#!/bin/bash
+launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
+rm /usr/local/var/postgres/postmaster.pid
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
